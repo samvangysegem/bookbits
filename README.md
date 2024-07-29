@@ -1,4 +1,4 @@
-# Apple Books Highlight Exporter
+# BookBits - Apple Books Highlight Exporter
 
 A simple command-line tool to export highlights and notes from Apple Books on macOS.
 
@@ -25,4 +25,8 @@ A simple command-line tool to export highlights and notes from Apple Books on ma
 
 ## Note
 
-This is a work in progress. Future updates may include additional features and improvements.
+This is a work in progress.
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome.
