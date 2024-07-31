@@ -120,13 +120,16 @@ def export_annotations(asset_id: str, format: str, book_title: str) -> str:
                                   "Notes": note.replace("\n", " ") if note else ""}
                                  for highlight, note in annotations)
         else:  # markdown
+            output_md = ""
+            for highlight, note in annotations:
+                output_md += "\n".join([f"> {line}" for line in highlight.split("\n")])
+                output_md += f"\n\n"
+                if note:
+                    output_md += f"{note}\n\n"
+            
             with open(filename, 'w') as mdfile:
-                mdfile.write(f"# Highlights - {book_title} \n\n")
-                for highlight, note in annotations:
-                    mdfile.write(f"{highlight}\n")
-                    if note:
-                        mdfile.write(f"*{note}*\n")
-                    mdfile.write("---\n")
+                mdfile.write(output_md)
+            
     except IOError as e:
         logging.error(f"Error writing to file: {e}")
         raise
@@ -195,11 +198,9 @@ def main():
                 try:
                     filename = export_annotations(selected_book, selected_format, book_details[selected_book][0])
                     print(f"Annotations exported to {filename}")
-                    logging.info(f"Annotations exported to {filename}")
                     break
                 except (ValueError, sqlite3.Error, IOError) as e:
                     print(f"Error exporting annotations: {e}")
-                    logging.error(f"Error exporting annotations: {e}")
             else:
                 print("Please select a book before exporting!")
         elif main_choice == 3 or main_choice is None:  # Quit
