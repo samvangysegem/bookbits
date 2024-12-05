@@ -19,7 +19,7 @@ A simple command-line tool to export highlights and notes from Apple Books on ma
 
 1. Clone the repository
 2. Install the required library: `pip install simple_term_menu`
-3. Run the script: `python apple_books_exporter.py`
+3. Run the script: `python bookbits.py`
 4. Follow the on-screen prompts to select a book and export format
 5. Find your exported highlights in the same directory as the script
 
